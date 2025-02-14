@@ -67,37 +67,39 @@ const Bookings = () => {
         <div style={{textAlign: 'center'}}>
           <input type="search" name="search" className="searchBar" placeholder="Search By Email" onChange={handleSearchFilter}/>
           {
-            <table border={1}>
-              <thead>
-                <tr>
-                  <th>Sr No.</th>
-                  <th>Email</th>
-                  <th>Status</th>
-                  <th>Seats</th>
-                  <th>Origin</th>
-                  <th>Destination</th>
-                  <th>Departure Time</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tableData.map((currElem, index) => {
-                  const { id, userEmail, status, seats, origin, destination, departureTime } = currElem;
-                  return (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>{userEmail}</td>
-                      <td>{status}</td>
-                      <td>{seats.toString()}</td>
-                      <td>{origin}</td>
-                      <td>{destination}</td>
-                      <td>{departureTime}</td>
-                      <td className="action" onClick={() => handleCancelBooking(id)} style={status === 'CANCELLED' ? {pointerEvents: 'none', opacity: '0.5'}: {}}>Cancel</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <div className="tableContainer">
+              <table border={1}>
+                <thead>
+                  <tr>
+                    <th>Sr No.</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Seats</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Departure Time</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableData.map((currElem, index) => {
+                    const { id, userEmail, status, seats, origin, destination, departureTime } = currElem;
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{userEmail}</td>
+                        <td>{status}</td>
+                        <td>{seats.toString()}</td>
+                        <td>{origin}</td>
+                        <td>{destination}</td>
+                        <td>{departureTime}</td>
+                        <td className="action" onClick={() => handleCancelBooking(id)} style={status === 'CANCELLED' ? {pointerEvents: 'none', opacity: '0.5'}: {}}>Cancel</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           }
         </div>
       )}
