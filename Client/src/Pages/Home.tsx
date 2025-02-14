@@ -19,7 +19,7 @@ type busData = {
 const Home = () => {
   const [availableSeats, setAvailableSeats] = useState<{[key: number]: number;}>({});
 
-  const { data, loading } = UseFetch<busData>("http://localhost:5000/api/v1/allBus");
+  const { data, loading } = UseFetch<busData>(`${import.meta.env.VITE_APP_URL}allBus`);
 
   const navigate = useNavigate();
 

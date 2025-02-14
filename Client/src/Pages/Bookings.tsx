@@ -19,7 +19,7 @@ const Bookings = () => {
   const [reload, setReload] = useState<boolean>(false);
 
   const { data, loading } = UseFetch<bookingType>(
-    "http://localhost:5000/api/v1/bookings",
+    `${import.meta.env.VITE_APP_URL}bookings`,
     reload  
   );
 
@@ -37,7 +37,7 @@ const Bookings = () => {
   const handleCancelBooking = async (busId: string) => {
     try {
       const { status } = await axios.post(
-        `http://localhost:5000/api/v1/booking/${busId}/cancel`
+        `${import.meta.env.VITE_APP_URL}booking/${busId}/cancel`
       );
   
       if (status === 200) {

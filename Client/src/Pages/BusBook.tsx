@@ -21,7 +21,7 @@ const BusBook = () => {
   const departureTime = searchParams.get("departureTime");
   
   const { data, loading } = UseFetch<seats>(
-    `http://localhost:5000/api/v1/bus/${busId}/seats`
+    `${import.meta.env.VITE_APP_URL}bus/${busId}/seats`
   );
 
   const availability = data?.availableSeats;
@@ -67,7 +67,7 @@ const BusBook = () => {
         alert("Please select atleast one seat");
       } else {
         const { status } = await axios.post(
-          `http://localhost:5000/api/v1/bus/${busId}/book`,
+          `${import.meta.env.VITE_APP_URL}bus/${busId}/book`,
           { userEmail, seats: selectedSeat, origin, destination, departureTime }
         );
 
